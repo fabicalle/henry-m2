@@ -53,6 +53,7 @@ ToDo.prototype.completeToDo = function () {
 
 function buildToDo(todo, index) {
   // Tu código acá:
+  
   let toDoShell = document.createElement('div'); //creo la variable toDoShell y le creo un div
   toDoShell.className = 'toDoShell';// le asigno el nombre toDoShell
 
