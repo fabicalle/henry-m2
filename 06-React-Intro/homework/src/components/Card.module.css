@@ -1,0 +1,33 @@
+.body{
+display: flex;
+flex-direction: column;
+width: 200px;
+border-radius: 10px; 
+align-content: center;
+border: 2px solid grey;
+height: 320px;
+background-color: rgb(186, 209, 209);
+}
+
+.btn{
+background-color: red;
+width: 35px;
+margin: 5px;
+align-self: flex-end;
+border-radius: 5px;
+}
+.btn:hover{
+    background-color: white;
+    cursor: pointer;
+}
+
+.info{
+display: flex;
+flex-direction: row;
+align-content: space-around;
+}
+
+.temp{
+margin: 25px;
+margin-bottom: -25px;
+}

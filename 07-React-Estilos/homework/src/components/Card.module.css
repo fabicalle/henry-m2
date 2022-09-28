@@ -1,0 +1,21 @@
+.container{
+display: flex;
+flex-direction: column;
+width: 200px;
+border-radius: 10px; 
+align-content: center;
+border: 2px solid grey;
+height: 25px;
+}
+
+.btn{
+background-color: red;
+width: 25px;
+margin: 5px;
+align-self: flex-end;
+}
+
+.info{
+display: flex;
+flex-direction: row;
+}
