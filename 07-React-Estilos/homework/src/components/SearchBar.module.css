@@ -1,0 +1,20 @@
+.container{
+    padding-right: 5px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    border-radius:  5px;
+    background-color:darkgrey;
+    
+}
+
+.btn{
+    background-color: rgb(88, 88, 88);
+    border-color: lightgreen;
+    color: lightgreen;
+}
+.btn:hover{
+    background-color: lightgreen;
+    border-color:rgb(88, 88, 88);
+    color: rgb(88, 88, 88);
+}
