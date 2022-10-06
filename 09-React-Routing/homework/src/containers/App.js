@@ -16,7 +16,7 @@ function App() {
   }
   function onSearch(ciudad) {
     //Llamado a la API del clima
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&units=metric&appid=${apiKey}`)
       .then(r => r.json())
       .then((recurso) => {
         if (recurso.main !== undefined) {
@@ -64,16 +64,11 @@ function App() {
             cities={cities}
             onClose={onClose} />}
         />
-        <Route
-
-          path='/ciudad/:ciudadId'
-          render={({ match }) => <Ciudad
-            city={cities.filter(c => c.id === parseInt(match.params.ciudadId))}
-          />}
-        />
+    
+    
         <Route
           exact path='/ciudad/:ciudadId'
-          render={({ match }) => <Ciudad city={onFilter(match.params.ciudadId)} />}
+          render={({ match }) => { return <Ciudad city={onFilter(match.params.ciudadId)} /> }}
         />
       </div>
       <hr />
