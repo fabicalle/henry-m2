@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import './Buscador.css';
-import {getMovies} from "../../actions";
+import { getMovies } from "../../actions";
 import { addMovieFavorite } from "../../actions";
 
 
@@ -19,12 +19,10 @@ export class Buscador extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    this.props.getMovies(this.state.title)
+    this.props.getMovies(this.state.title);
   }
 
-  handleClick(movie){
-  this.props.addMovieFavorite(movie)
-  }
+
   render() {
     const { title } = this.state;
     return (
@@ -44,18 +42,18 @@ export class Buscador extends Component {
           <button type="submit">BUSCAR</button>
         </form>
         <ul>
-         {
-          this.props.movies.map(movie=>{
-            return(
-              <li>
-                <Link to ={`/movie/${movie.imdbID}`}>
-                <span>{movie.Title} </span>  
-                </Link>
-                <button onClick={()=>this.handleClick({id:movie.imdbID, Title: movie.Title})}>ADD</button>
-              </li>
-            );
-          })
-         }
+          {
+            this.props.movies.map(movie => {
+              return (
+                <li key={movie.imdbID}>
+                  <Link to={`/movie/${movie.imdbID}`}>
+                   <span> {movie.Title} </span>
+                  </Link>
+                  <button onClick={() => this.props.addMovieFavorite({ title: movie.Title,id: movie.imdbID })}>FAV</button>
+                </li>
+              );
+            })
+          }
         </ul>
       </div>
     );
@@ -63,15 +61,15 @@ export class Buscador extends Component {
 }
 
 
-const mapStateToProps=(state) =>{
+const mapStateToProps = (state) => {
   return {
-    movies: state.moviesLoaded
+    movies: state.movies,
   };
 }
-const mapDispatchToProps=(dispatch) =>{
+const mapDispatchToProps = (dispatch) => {
   return {
-    addMovieFavorite: movie => dispatch(addMovieFavorite(movie)),
-    getMovies: title => dispatch(getMovies(title))
+    addMovieFavorite: (movie) =>{ dispatch(addMovieFavorite(movie))},
+    getMovies: (title) => {dispatch(getMovies(title))},
   };
 }
 

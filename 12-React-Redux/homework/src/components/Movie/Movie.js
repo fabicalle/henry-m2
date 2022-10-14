@@ -7,16 +7,17 @@ import './Movie.css';
 class Movie extends React.Component {
 
     componentDidMount() {
-        this.props.getMovieDetail(this.props.match.params.id)
+        const movieId =this.props.match.params.id;
+        this.props.getMovieDetail(movieId)
     }
 
     render() {
         return (
             <div className="movie-detail">
-                <h4>{this.props.MovieDetail.Title}</h4>
-                <p>{this.props.MovieDetail.Year} </p>
-                <img src={this.props.MovieDetail.Poster} alt=""></img>
-                <p>{this.props.MovieDetail.Plot} </p>
+                <h4>{this.props.movie.Title}</h4>
+                <p>{this.props.movie.Year} </p>
+                <img src={this.props.movie.Poster} alt=""></img>
+                <p>{this.props.movie.Plot}</p>
             </div>
         );
     }
@@ -24,14 +25,14 @@ class Movie extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        MovieDetail: state.MovieDetail,
+        movie: state.movieDetail,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getMovieDetail: (movieId) => {
-            dispatch(getMovieDetail(movieId))
+        getMovieDetail: (id) => {
+            dispatch(getMovieDetail(id))
         }
     }
 }

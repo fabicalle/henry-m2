@@ -1,42 +1,42 @@
 
-import { getMovies } from "../actions";
-import { getMovieDetail } from "../actions";
-import { addMovieFavorite } from "../actions";
-import { removeMovieFavorite } from "../actions";
+import {GET_MOVIES ,
+ GET_MOVIE_DETAIL, 
+ ADD_MOVIE_FAVORITE ,
+ REMOVE_MOVIE_FAVORITE,} from "../actions/index";
 
 
 const initialState = {
-  moviesFavourites: [],
-  moviesLoaded: [],
+  moviesFavorites: [],
+  movies: [],
   movieDetail: {}
 };
 
-const rootReducer = (state = initialState, action)=>{
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-   
-    case getMovies:
+
+    case GET_MOVIES:
       return {
         ...state,
-        moviesLoaded: action.payload.Search,
+        movies: action.payload.Search,
       };
-      case getMovieDetail:
-        return{
-          ...state,
-          movieDetail: action.payload,
-        };
-        case addMovieFavorite:
-          return {
-            ...state,
-            moviesFavourites:[...state.moviesFavourites,action.payload],
-          };
-          case removeMovieFavorite:
-            return{
-              ...state,
-              moviesFavourites: state.moviesFavourites.filter((movie)=> movie.id !== action.payload),
-            };
-      default:
-        return { ...state };
-    }
+    case GET_MOVIE_DETAIL:
+      return {
+        ...state,
+        movieDetail: action.payload,
+      };
+    case ADD_MOVIE_FAVORITE:
+      return {
+        ...state,
+        moviesFavorites:[ ...state.moviesFavorites,action.payload],
+      };
+    case REMOVE_MOVIE_FAVORITE:
+      return {
+        ...state,
+        moviesFavorites: state.moviesFavorites.filter((movie) => movie.id !== action.payload),
+      };
+    default:
+      return { ...state };
+  }
 
 }
 
